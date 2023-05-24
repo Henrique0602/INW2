@@ -75,10 +75,49 @@ class Corrente  extends Contas{
     }
 }
 
+// SUb class poupança
+
+class Poupanca extends Contas{
+    constructor(numero,cpf,saldo,ativo,AniversarioPoupanca){
+    super(numero,cpf,saldo,ativo)
+    this.AniversarioPoupanca = AniversarioPoupanca
+}
+
+correcao(dia){
+    if(this.AniversarioPoupanca == dia){
+        this.saldo = (this.saldo * 0.05) + this.saldo
+        console.log("Parabéns!!!!!! aniversario da sua conta você recebeu uma correção na sua conta")
+    }
+    else{
+        console.log("Poxaaa!!! Hoje não é aniversário da sua conta, portanto você não teve nenhuma correção")
+    }
+ }
+
+}
 
 
-  
 
+  // sub class Especial
+    class Especial extends Contas{
+        constructor(numero,cpf,saldo,ativo,limite){
+        super(numero,cpf,saldo,ativo)
+        this.limite = limite
+    }
+    
+    
+     sarLimite(valor){
+      if(valor > this.limite){
+       console.log("impossível realizar, sem limite...")
+      }
+      else{
+       this.limite = this.limite - valor
+       this.credito(valor)
+      }
+      console.log("Limite atual : "+this.limite)
+      console.log("Saldo atual da conta : "+this.saldo)
+     }
+    }
+    
 
   
 // programa principal 
@@ -98,9 +137,32 @@ let opcao = ""
     console.log("5- sair ")
     opcao=leia("Digite o número da sua opção : ")
     if (opcao == "1"){
-        console.log("Testando conta poupança")
-    }
-    else if (opcao == "2"){
+        console.log("Conta Poupança")
+         let numero = parseInt(leia("digite o número da conta : "))
+          let cpf = leia("Digite o cpf : ")
+          let AniversarioPoupanca = leia("Digite o aniversario da sua conta : ")
+          let dia = leia("Digite a data de hoje : ")
+          let Poupanca1 = new Poupanca(numero,cpf,0,false,AniversarioPoupanca)
+           Poupanca1.ativar()
+            for(let i=1; i<=10; i++){
+              console.log("Movimento "+i)
+              console.log("Saldo da conta : R$ "+Poupanca1.saldo+" ")
+              valor = parseInt(leia("Digite o valor :"))
+              op = leia("Digite D - débito ou C - crédito : ").toUpperCase()
+              if (op=="D"){
+                Poupanca1.Debito(valor)
+            }else if(op =="C"){
+                Poupanca1.credito(valor)
+            }
+          
+            }
+          
+          
+            Poupanca1.correcao(dia)
+            console.log("Saldo final da conta : R$ "+Poupanca1.saldo+"")
+          
+        }
+        else if (opcao == "2"){
         console.log("Conta corrente")
         let numero = leia("Digite o numero da conta : ")
         let cpf = leia("Digite o cpf : ")
@@ -135,8 +197,32 @@ let opcao = ""
             console.log("Saldo final conta : " +corrente1.saldo.toFixed(2));
 
     }else if (opcao == "3"){
-        console.log("Testando conta Especial")
-    }
+        console.log("Conta Especial")
+        let numero = parseInt(leia("digite o número da conta : "))
+        let cpf = leia("Digite o cpf : ")
+        let Especial1 = new Especial(numero,cpf,0,false,1000)
+        Especial1.ativar()
+         for(let i=1; i<=10; i++){
+            console.log("Movimento "+i)
+            console.log("Saldo da conta : R$ "+Especial1.saldo+"")
+            valor = parseInt(leia("Digite o valor :"))
+            op = leia("Digite D - débito ou C - crédito : ").toUpperCase()
+            if(op == "C"){
+                Especial1.credito(valor)
+            }
+            else if (op == "D"){
+                    if(valor > (Especial1.saldo + Especial1.limite)){
+                    console.log("Dinheiro suficiente")
+                    }
+                    else if(valor > Especial1.saldo){
+                    let x = valor - Especial1.saldo
+                    Especial1.usarLimite(x)
+        
+                    }
+                    Especial1.Debito(valor)
+                }
+            }
+        }
     else if (opcao == "4"){
         console.log("Testando conta Estudantil")
     }
