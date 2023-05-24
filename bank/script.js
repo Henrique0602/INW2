@@ -52,28 +52,35 @@ class Contas{
     }
 }
 
+
 // Sua sub-Classe 
 
 class Corrente  extends Contas{
     constructor(numero,cpf,saldo,ativo, ContadorTalao){
         super(numero,cpf,saldo,ativo);
         this.ContadorTalao = ContadorTalao;
+        this.ContadorTalao=0;
     }
 
-
-    solicitarCheque() {
-        if (this.ContadorTalao <= 3) {
-        this.saldo -= 30.0; 
-        this.ContadorTalao++;
-        console.log("Cheque solicitado com sucesso.");
-        } else {
-        console.log("Limite máximo de cheques atingido.");
+    solicitarCheque(){
+        if (this.ContadorTalao < 3){
+            if(this.saldo >=30){
+                this.saldo -=30;
+                this.ContadorTalao++;
+                console.log("Cheque solicitado ");
+            }else{
+                console.log("Limite de cheques atingidos");
+            }
         }
-     }
-
     }
+}
 
 
+
+  
+
+
+  
 // programa principal 
 
 const leia = require("prompt-sync")()
@@ -98,29 +105,36 @@ let opcao = ""
         let numero = leia("Digite o numero da conta : ")
         let cpf = leia("Digite o cpf : ")
         // 0 , false , 30
-        let corrente1 = new Corrente(numero,cpf, 0 , false, 3);
+        const corrente1 = new Corrente(numero,cpf, 0 , false, 3);
         let op="";
         let valor = 0;
         corrente1.ativar()
         for (let x=1; x<=10; x++){
-                valor = leia("Digite o valor : ")
+                valor = parseInt(leia("Digite o valor : "))
                 op =leia ("Digite D para Debito ou C para Credito : ")
                 if (op=="D"){
                     corrente1.Debito(valor)
                 }else if(op =="C"){
                     corrente1.credito(valor)
                 }
-                console.log("Saldo atual R$ : " +corrente1.saldo)
-             }
-             const solicitarCheque = leia("Deseja solicitar um cheque? (S/N): ");
-             if (solicitarCheque == "S") {
-             contaCorrente.solicitarCheque();
-             }
-        corrente1.ContadorTalao(valor)
-        console.log("Saldo final : " +corrente1.saldo)
+                console.log ("Saldo atual R$ : " +corrente1.saldo)
+           }
+             
+             const continuar = leia("\nContinuar?(S/N) : ");
+             if(continuar =="S"){
+                const  solicitarCheque = leia("Deseja solicitar um cheque ? (S/N) :");
+                if(solicitarCheque == "S"){
+                    corrente1.solicitarCheque();
+                } else if(solicitarCheque == "N"){
+                    console.log("Programa finalizado")
+                }else if(continuar == "N"){
+                    console.log("Programa finalizado")
+                }
+            } 
+           
+            console.log("Saldo final conta : " +corrente1.saldo.toFixed(2));
 
-    }
-    else if (opcao == "3"){
+    }else if (opcao == "3"){
         console.log("Testando conta Especial")
     }
     else if (opcao == "4"){
