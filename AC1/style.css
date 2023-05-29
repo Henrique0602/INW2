@@ -1,0 +1,33 @@
+.container{
+    background-color: black;
+    width: 100%;
+}
+
+.topo h1{
+    display: flex;
+    color: white;
+    justify-content: center;
+}
+
+.topo p{
+    display: flex;
+    color: white;
+    justify-content: center;
+}
+
+.meio{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    width: 100vw;
+
+}
+
+.carrosel1 img{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+
+
