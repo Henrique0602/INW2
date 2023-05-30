@@ -1,0 +1,25 @@
+{
+    "produtos": [
+    {
+    "id": 1,
+    "descricao": "Brinco",
+    "estoque": 200,
+    "valor": 100,
+    "imagem": "IMG/brinco_au_18k_686824_em_p_-removebg-preview.png"
+    },
+    {
+    "id": 2,
+    "descricao": "Corrente",
+    "estoque": 100,
+    "valor": 150,
+    "imagem" : "img/PNGTRPNT_368638C00_RGB.png"
+    },
+    {
+    "id": 3,
+    "descricao": "Bracelete",
+    "estoque": 100,
+    "valor": 500,
+    "imagem" : "img/PNGTRPNT_590723CZ_RGB.png"
+    }
+    ]
+   }
