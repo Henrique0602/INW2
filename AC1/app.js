@@ -1,9 +1,9 @@
-const url = 'http://localhost:3000/produtos'
-fetch(url)
+  const url = 'http://localhost:3000/produtos'
+  fetch(url)
  .then((req) => req.json())
  .then((data) => mostraProdutos(data));
 
-function mostraProdutos(produtos){
+  function mostraProdutos(produtos){
  const htmlProdutos = produtos.map(
  (produto) =>`
 

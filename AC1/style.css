@@ -1,12 +1,29 @@
+
+body{
+    background-image: url("https://images7.alphacoders.com/408/408321.jpg");
+       background-attachment: fixed;
+       width: 100vw;
+       height: 90vh;
+       background-repeat: no-repeat;
+}
+
+
 .container{
     background-color: black;
     width: 100%;
 }
-
+header img{
+    width: 80px;
+    display: flex;
+    justify-content: right;
+    
+}
 .topo h1{
     display: flex;
     color: white;
     justify-content: center;
+    margin-top: -72px;
+    
 }
 
 .topo p{
@@ -47,7 +64,12 @@ footer {
 }
 
 main h1{
-    color: blue;
+    color: rgb(255, 255, 255);
+    text-align: justify;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+
     
 }
 
@@ -67,3 +89,19 @@ main h1{
     display: flex;
     flex-direction: row;
 }
+
+.sobre p{
+    font-size: 20px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgb(255, 255, 255);
+    text-align: justify;
+    margin-top: 50px;
+}
+
+.mb-3 label{
+    color:white;
+}
+.form-text{
+    color: white;
+}
+
