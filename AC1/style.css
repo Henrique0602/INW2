@@ -29,5 +29,11 @@
    align-items: center;
 }
 
+.dourado{
+    background-color: darkgoldenrod;
+    border: none;
+    display: flex;
+    justify-content: center;
+}
 
 
