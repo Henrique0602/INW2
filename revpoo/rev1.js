@@ -4,4 +4,3 @@ let numero = 0;
 numero = parseInt(leia("Digite um numero entre 5 e 9 : "));
 console.log(numero)
 
-h
