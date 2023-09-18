@@ -1,8 +1,6 @@
 // requisitando o pacote mongoose
 const mongoose = require('mongoose');
-
 // criar a chave de conexão 
-
 mongoose.connect('mongodb://127.0.0.1:27017/escola',
     {
         useNewUrlParser : true,
@@ -11,22 +9,16 @@ mongoose.connect('mongodb://127.0.0.1:27017/escola',
     }
 );
 
-
 //executando a conexão 
-
 const db = mongoose.connection;
-
 //codigos de teste da conexão
 
 db.on('error', console.error.bind(console,'connection error : '))
-
 db.once('open',function(){
     console.log("Estamos conectados ao mongoDB")
 })
 
-
 // segunda fase - usando o banco 
-
 // criando um Schema
 
 const alunoSchema = new mongoose.Schema({
@@ -34,9 +26,7 @@ const alunoSchema = new mongoose.Schema({
     Nome : String,
     idade : Number,
     turma : String
-
 })
-
 
 // 2-  criando a model 
 
